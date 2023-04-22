@@ -6,7 +6,8 @@ import java.util.List;
 /* 
 Обратный отсчет
 1. Разберись, что делает программа.
-2. Реализуй логику метода printCountdown так, чтобы программа каждые полсекунды выводила объект из переменной list. Выводить нужно в обратном порядке - от переданного в Countdown индекса до нуля.
+2. Реализуй логику метода printCountdown так, чтобы программа каждые полсекунды выводила объект из переменной list.
+Выводить нужно в обратном порядке - от переданного в Countdown индекса до нуля.
 
 Пример:
 Передан индекс 3
@@ -55,7 +56,8 @@ public class Solution {
         }
 
         public void printCountdown() throws InterruptedException {
-            //add your code here - добавь код тут
+            Thread.sleep(500);
+            System.out.println(list.get(--countFrom));
         }
     }
 }
