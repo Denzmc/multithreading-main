@@ -3,7 +3,8 @@ package task1619;
 /* 
 А без interrupt слабо?
 Разберись, как работает программа.
-Реализуй метод ourInterruptMethod таким образом, чтобы он прерывал нить TestThread. Исправь остальной код программы, если это необходимо. Нельзя использовать метод interrupt.
+Реализуй метод ourInterruptMethod таким образом, чтобы он прерывал нить TestThread.
+Исправь остальной код программы, если это необходимо. Нельзя использовать метод interrupt.
 
 
 Requirements:
@@ -15,6 +16,7 @@ Requirements:
 6. Метод main должен вызывать метод ourInterruptMethod.*/
 
 public class Solution {
+    static boolean isAlive = true;
     public static void main(String[] args) throws InterruptedException {
         Thread t = new Thread(new TestThread());
         t.start();
@@ -23,16 +25,17 @@ public class Solution {
     }
 
     public static void ourInterruptMethod() {
-
+        isAlive = false;
     }
 
     public static class TestThread implements Runnable {
         public void run() {
-            while (true) {
+            while (isAlive) {
                 try {
                     System.out.println("he-he");
                     Thread.sleep(500);
                 } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
             }
         }

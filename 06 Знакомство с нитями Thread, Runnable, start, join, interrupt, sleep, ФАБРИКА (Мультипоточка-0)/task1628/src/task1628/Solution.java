@@ -43,23 +43,39 @@ public class Solution {
         consoleReader3.start();
 
         while (count > readStringCount.get()) {
+
         }
 
         consoleReader1.interrupt();
+        System.out.println(consoleReader1.getName()+" inter "+consoleReader1.isInterrupted());
         consoleReader2.interrupt();
+        System.out.println(consoleReader2.getName()+" inter "+consoleReader2.isInterrupted());
         consoleReader3.interrupt();
+        System.out.println(consoleReader3.getName()+" inter "+consoleReader3.isInterrupted());
         System.out.println("#1:" + consoleReader1);
         System.out.println("#2:" + consoleReader2);
         System.out.println("#3:" + consoleReader3);
 
         reader.close();
+        System.out.println(readStringCount);
     }
 
     public static class ReaderThread extends Thread {
-        private List<String> result = new ArrayList<String>();
+        private List<String> result = new ArrayList<>();
 
         public void run() {
-            //напишите тут ваш код
+            try {
+
+                while (!isInterrupted()){
+                    result.add(reader.readLine());
+                    readStringCount.incrementAndGet();
+                    System.out.println(Thread.currentThread().getName());
+
+                }
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
         @Override

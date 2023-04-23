@@ -13,7 +13,8 @@ Requirements:
 3. Класс T1 не изменять.
 4. Класс T2 не изменять.
 5. Метод sleep не использовать.
-6. Вывод программы должен состоять из 2х строк, информирующих о завершении нитей. Например: "T1 was interrupted" и "T2 finished".
+6. Вывод программы должен состоять из 2х строк, информирующих о завершении нитей.
+Например: "T1 was interrupted" и "T2 finished".
 7. Нити t1 и t2 должны завершаться (не обязательно успешно).*/
 
 public class Solution {
@@ -22,6 +23,7 @@ public class Solution {
 
     public static void main(String[] args) throws InterruptedException {
         t1.start();
+        t1.interrupt();
         t2.start();
     }
 
