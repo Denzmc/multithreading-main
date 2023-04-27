@@ -5,8 +5,12 @@ public class IMF {
 
     private static IMF imf;
 
-    public static IMF getFund() {
-        //add your code here - добавь код тут
+    public  static IMF getFund() {
+        synchronized(IMF.class){
+            if (imf == null){
+                imf = new IMF();
+            }
+        }
         return imf;
     }
 
